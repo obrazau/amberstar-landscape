@@ -1,6 +1,5 @@
----
 title: Amberstar Landscapes
-layout: base.njk
+layout: layouts/base.njk
 ---
 <section id="home" class="bg-cover bg-center min-h-[50vh] flex items-center justify-center bg-black bg-opacity-50" style="background-image: url('/public/uploads/hero.jpg')">
   <div class="text-center text-white px-4 py-8">
