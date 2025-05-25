@@ -135,7 +135,22 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Contact Form -->
                 <div>
-                    <form action="https://formspree.io/f/your-form-id" method="POST" class="space-y-4">
+                    <!-- modify this form HTML and place wherever you want your form -->
+<form
+  action="https://formspree.io/f/mgvkqdbk"
+  method="POST"
+>
+  <label>
+    Your email:
+    <input type="email" name="email">
+  </label>
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+  <!-- your other form fields go here -->
+  <button type="submit">Send</button>
+</form>
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
                             <input type="text" id="name" name="name" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500">
