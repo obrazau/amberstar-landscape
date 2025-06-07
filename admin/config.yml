@@ -39,10 +39,13 @@ collections:
  # ----------------------------------------------------
   # Pages Collection (e.g., About, Contact, etc.)
   # ----------------------------------------------------
+  # ----------------------------------------------------
+  # Pages Collection (e.g., About, Contact, etc.)
+  # ----------------------------------------------------
   - name: "pages"
     label: "Pages"
     folder: "content/pages" # Adjust this path to where your static pages are stored
-    create: true            # <--- THIS IS LINE 45 IN THE EXAMPLE
+    create: true            # <--- Corrected line!
     slug: "{{slug}}"        # Filename template (e.g., about.md, contact.md)
     editor:
       preview: false
