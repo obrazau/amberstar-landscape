@@ -1,0 +1,34 @@
+backend:
+  name: git-gateway
+  branch: main  # Adjust to your repo’s branch (e.g., main or master)
+media_folder: "static/images/uploads"  # Store uploaded images here
+public_folder: "/images/uploads"  # Public URL for images
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "content/home.md"
+        label: "Home Page"
+        name: "home"
+        fields:
+          - { label: "Hero Title", name: "hero_title", widget: "string" }
+          - { label: "Hero Subtitle", name: "hero_subtitle", widget: "string" }
+          - { label: "Hero Button", name: "hero_button", widget: "string" }
+          - { label: "About Title", name: "about_title", widget: "string" }
+          - { label: "About Body", name: "about_body", widget: "text" }
+          - { label: "Facebook Link", name: "facebook_link", widget: "string" }
+      - file: "content/contact.md"
+        label: "Contact Page"
+        name: "contact"
+        fields:
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Location", name: "location", widget: "string" }
+  - name: "services"
+    label: "Services"
+    folder: "content/services"
+    create: true  # Allows adding new services
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Image", name: "image", widget: "image" }
