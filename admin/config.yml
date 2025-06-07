@@ -1,32 +1,45 @@
 backend:
   name: git-gateway
-  branch: main # Branch to store content in
-  # Netlify Identity is deprecated for new configurations,
-  # but if you're using it, ensure it's enabled.
-  # Otherwise, explore alternatives like Auth0 + Git Gateway or other headless CMS options.
+  branch: main # Or 'master' if your primary branch is named that
+  # Netlify Identity is often used here. If you're using an alternative,
+  # like Auth0, you'd configure it here.
+  # e.g., name: auth0
+  #        domain: YOUR_AUTH0_DOMAIN
+  #        client_id: YOUR_AUTH0_CLIENT_ID
+  #        app_id: YOUR_AUTH0_APP_ID # if using Auth0 with Decap CMS, this might be required
 
-media_folder: "static/images" # Where uploaded images will be stored
-public_folder: "/images"     # The public path to your images
+publish_mode: editorial_workflow # Recommended for client editing: content goes into a "draft" state first
+                                # and requires explicit publishing. Remove this line for direct commits.
+
+media_folder: "static/uploads" # Where uploaded images and files will be stored in your Git repo
+public_folder: "/uploads"       # The public path to your uploaded images and files (relative to base URL)
 
 collections:
-  - name: "posts" # A label used in the CMS UI
-    label: "Blog Posts" # The name displayed in the CMS UI
-    folder: "content/blog" # The path to your content files
-    create: true # Allow users to create new documents in this collection
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template
-    fields: # The fields for your content
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Tags", name: "tags", widget: "list", required: false}
-      - {label: "Featured Image", name: "thumbnail", widget: "image", required: false}
+  # ----------------------------------------------------
+  # Blog Posts Collection
+  # ----------------------------------------------------
+  - name: "posts"
+    label: "Blog Posts"
+    folder: "content/blog" # Adjust this path to where your blog posts are stored
+    create: true # Allow users to create new blog posts
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template (e.g., 2025-06-08-my-first-post.md)
+    editor:
+      preview: false # Set to true if you want to configure custom previews
+    fields:
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Publish Date", name: "date", widget: "datetime", required: true, format: "YYYY-MM-DDTHH:mm:ssZ", picker_utc: true}
+      - {label: "Author", name: "author", widget: "string", default: "Your Name"}
+      - {label: "Featured Image", name: "image", widget: "image", required: false, allow_multiple: false, choose_url: false}
+      - {label: "Image Alt Text", name: "image_alt", widget: "string", required: false}
+      - {label: "Categories", name: "categories", widget: "list", default: ["Uncategorized"], required: false, field: {label: "Category", name: "category", widget: "string"}}
+      - {label: "Tags", name: "tags", widget: "list", required: false, field: {label: "Tag", name: "tag", widget: "string"}}
+      - {label: "Body", name: "body", widget: "markdown", required: true}
+      - {label: "Draft", name: "draft", widget: "boolean", default: true, required: true, hint: "Set to false to publish the post"}
 
+  # ----------------------------------------------------
+  # Pages Collection (e.g., About, Contact, etc.)
+  # ----------------------------------------------------
   - name: "pages"
     label: "Pages"
-    folder: "content/pages"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Permalink", name: "permalink", widget: "string"}
+    folder: "content/pages" # Adjust this path to where your static pages are stored
+    create
