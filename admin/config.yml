@@ -36,10 +36,18 @@ collections:
       - {label: "Body", name: "body", widget: "markdown", required: true}
       - {label: "Draft", name: "draft", widget: "boolean", default: true, required: true, hint: "Set to false to publish the post"}
 
-  # ----------------------------------------------------
+ # ----------------------------------------------------
   # Pages Collection (e.g., About, Contact, etc.)
   # ----------------------------------------------------
   - name: "pages"
     label: "Pages"
     folder: "content/pages" # Adjust this path to where your static pages are stored
-    create
+    create: true            # <--- THIS IS LINE 45 IN THE EXAMPLE
+    slug: "{{slug}}"        # Filename template (e.g., about.md, contact.md)
+    editor:
+      preview: false
+    fields:
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Permalink", name: "permalink", widget: "string", hint: "The URL path for this page (e.g., /about/, /contact/)", required: true}
+      - {label: "Body", name: "body", widget: "markdown", required: true}
+      - {label: "Draft", name: "draft", widget: "boolean", default: true, required: true, hint: "Set to false to publish the page"}
