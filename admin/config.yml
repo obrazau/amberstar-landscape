@@ -1,15 +1,15 @@
 backend:
   name: git-gateway
-  branch: main
+  branch: main   # or whichever branch you're using
 
-media_folder: "static/img"
-public_folder: "/img"
+media_folder: "public/uploads"
+public_folder: "/uploads"
 
 collections:
   - name: "pages"
     label: "Pages"
-    folder: "content/pages"
-    create: true
+    folder: ""            # root folder if editing HTML directly
+    create: false         # set true if you want to add new pages
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Content", name: "body", widget: "markdown" }
