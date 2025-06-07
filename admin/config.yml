@@ -1,0 +1,32 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to store content in
+  # Netlify Identity is deprecated for new configurations,
+  # but if you're using it, ensure it's enabled.
+  # Otherwise, explore alternatives like Auth0 + Git Gateway or other headless CMS options.
+
+media_folder: "static/images" # Where uploaded images will be stored
+public_folder: "/images"     # The public path to your images
+
+collections:
+  - name: "posts" # A label used in the CMS UI
+    label: "Blog Posts" # The name displayed in the CMS UI
+    folder: "content/blog" # The path to your content files
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template
+    fields: # The fields for your content
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "Featured Image", name: "thumbnail", widget: "image", required: false}
+
+  - name: "pages"
+    label: "Pages"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Permalink", name: "permalink", widget: "string"}
