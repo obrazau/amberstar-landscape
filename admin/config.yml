@@ -36,16 +36,13 @@ collections:
       - {label: "Body", name: "body", widget: "markdown", required: true}
       - {label: "Draft", name: "draft", widget: "boolean", default: true, required: true, hint: "Set to false to publish the post"}
 
- # ----------------------------------------------------
-  # Pages Collection (e.g., About, Contact, etc.)
-  # ----------------------------------------------------
   # ----------------------------------------------------
   # Pages Collection (e.g., About, Contact, etc.)
   # ----------------------------------------------------
   - name: "pages"
     label: "Pages"
     folder: "content/pages" # Adjust this path to where your static pages are stored
-    create: true            # <--- Corrected line!
+    create: true            # This line should now be correct
     slug: "{{slug}}"        # Filename template (e.g., about.md, contact.md)
     editor:
       preview: false
@@ -54,3 +51,23 @@ collections:
       - {label: "Permalink", name: "permalink", widget: "string", hint: "The URL path for this page (e.g., /about/, /contact/)", required: true}
       - {label: "Body", name: "body", widget: "markdown", required: true}
       - {label: "Draft", name: "draft", widget: "boolean", default: true, required: true, hint: "Set to false to publish the page"}
+
+  # ----------------------------------------------------
+  # Site Settings (Example - Adjust as needed)
+  # ----------------------------------------------------
+  - name: "settings"
+    label: "Site Settings"
+    editor:
+      preview: false
+    files:
+      - file: "data/site.json" # Adjust this path to a JSON or YAML file for site-wide data
+        label: "General Settings"
+        name: "general_settings"
+        fields:
+          - {label: "Site Name", name: "site_name", widget: "string", required: true}
+          - {label: "Site Description", name: "site_description", widget: "text", required: false}
+          - {label: "Contact Email", name: "contact_email", widget: "string", required: false}
+          - {label: "Social Links", name: "social_links", widget: "list", required: false, fields: [
+              {label: "Platform", name: "platform", widget: "string"},
+              {label: "URL", name: "url", widget: "string", pattern: "^https?://.*$", hint: "Must be a valid URL starting with http:// or https://"}
+            ]}
