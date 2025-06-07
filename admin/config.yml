@@ -8,8 +8,9 @@ public_folder: "/uploads"
 collections:
   - name: "pages"
     label: "Pages"
-    folder: ""            # root folder if editing HTML directly
-    create: false         # set true if you want to add new pages
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Content", name: "body", widget: "markdown" }
+    files:
+      - label: "Home Page"
+        name: "home"
+        file: "index.html"
+        fields:
+          - { label: "Page Content", name: "body", widget: "code", default: "", required: false }
