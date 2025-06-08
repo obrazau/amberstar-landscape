@@ -1,0 +1,4 @@
+git rm -r --cached public/uploads/
+git add .gitignore
+git commit -m "Remove public/uploads from .gitignore"
+git push origin main
