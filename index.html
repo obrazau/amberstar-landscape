@@ -1,1 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Amberstar Landscapes offers premium landscaping and maintenance services in Barnsley South Yorkshire and surrounding areas.">
+  <meta name="keywords" content="landscaping, maintenance, Barnsley South Yorkshire, paving, driveways, fencing, artificial grass, roof cleaning, gutter cleaning">
+  <title>Amberstar Landscapes</title>
+  
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  
+  <style>
+    #cookie-popup {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 1rem;
+      z-index: 1000;
+    }
+    #cookie-popup.show {
+      display: block;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    .service-img {
+      height: 150px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body class="font-sans text-gray-800">
 
+  <!-- Cookie Banner -->
+  <div id="cookie-popup" class="text-center">
+    <p class="mb-4">We use cookies to enhance your experience. By clicking 'Accept All', you consent to our use of cookies.</p>
+    <button onclick="acceptCookies()" class="bg-green-600 text-white px-4 py-2 rounded mr-2">Accept All</button>
+    <button onclick="rejectCookies()" class="bg-gray-600 text-white px-4 py-2 rounded">Reject All</button>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="bg-green-600 text-white sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <a href="#home" class="flex items-center">
+          <img src="/logo.jpg" alt="Amberstar Landscapes Logo" class="h-10 w-auto mr-2">
+          <span class="text-2xl font-bold">Amberstar Landscapes</span>
+        </a>
+        <div class="flex items-center space-x-4">
+          <a href="#home" class="hover:bg-green-700 px-3 py-2 rounded">Home</a>
+          <a href="#about" class="hover:bg-green-700 px-3 py-2 rounded">About</a>
+          <a href="#services" class="hover:bg-green-700 px-3 py-2 rounded">Services</a>
+          <a href="#contact" class="hover:bg-green-700 px-3 py-2 rounded">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="bg-cover bg-center min-h-[50vh] flex items-center justify-center" style="background-image: url('/hero.jpg')">
+    <div class="text-center text-white bg-black bg-opacity-60 p-6 rounded">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Premium Landscaping & Maintenance</h1>
+      <p class="text-lg mb-6">Transforming Outdoor Areas</p>
+      <a href="#contact" class="bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700">Contact Us</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center mb-8">About Amberstar Landscapes</h2>
+      <p class="text-lg text-gray-600 mb-6">
+        Based in Barnsley South Yorkshire, Amberstar Landscapes provides top-tier landscaping and maintenance services for residential and commercial clients. Our fully insured team, equipped with modern tools, delivers tailored solutions that blend functionality with stunning aesthetics.
+      </p>
+      <p class="text-lg text-gray-600">
+        Follow us on <a href="https://www.facebook.com/profile.php?id=61575086914712" target="_blank" class="text-green-600 hover:underline">Facebook</a> for project showcases and landscaping tips.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="bg-gray-100 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center mb-8">Our Services</h2>
+      <div id="services-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-gray-100 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center mb-8">Contact Us</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <form action="https://formspree.io/f/mgvkqdbk" method="POST" class="space-y-4">
+          <div>
+            <label for="name" class="block text-sm font-medium">Name</label>
+            <input type="text" id="name" name="name" required class="w-full px-4 py-2 border rounded shadow-sm">
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium">Email</label>
+            <input type="email" id="email" name="email" required class="w-full px-4 py-2 border rounded shadow-sm">
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium">Message</label>
+            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 border rounded shadow-sm"></textarea>
+          </div>
+          <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">Send Message</button>
+        </form>
+        <div class="text-lg text-gray-600">
+          <p class="mb-4"><strong>Phone:</strong> <a href="tel:07432487784" class="text-green-600 hover:underline">07432487784</a></p>
+          <p class="mb-4"><strong>Email:</strong> <a href="mailto:amberstarlandcapes@gmail.com" class="text-green-600 hover:underline">amberstarlandcapes@gmail.com</a></p>
+          <p class="mb-4"><strong>Location:</strong> Barnsley, South Yorkshire</p>
+          <p><strong>Facebook:</strong> <a href="https://www.facebook.com/profile.php?id=61575086914712" target="_blank" class="text-green-600 hover:underline"><i class="fab fa-facebook-f mr-2"></i>Amberstar</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-green-600 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+        <div>
+          <h3 class="font-semibold mb-2">Amberstar Landscapes</h3>
+          <p>Premium landscaping services in Barnsley South Yorkshire. Fully insured and committed to excellence.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Quick Links</h3>
+          <ul>
+            <li><a href="#home" class="hover:underline">Home</a></li>
+            <li><a href="#about" class="hover:underline">About</a></li>
+            <li><a href="#services" class="hover:underline">Services</a></li>
+            <li><a href="#contact" class="hover:underline">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Contact</h3>
+          <p>07432487784</p>
+          <p>amberstarlandcapes@gmail.com</p>
+          <p>Barnsley, South Yorkshire</p>
+        </div>
+      </div>
+      <div class="mt-8 text-center text-sm">
+        &copy; 2025 Amberstar Landscapes. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    window.onload = function() {
+      if (!localStorage.getItem('cookiesAccepted')) {
+        document.getElementById('cookie-popup').classList.add('show');
+      }
+      loadServices();
+    };
+    function acceptCookies() {
+      localStorage.setItem('cookiesAccepted', 'true');
+      document.getElementById('cookie-popup').classList.remove('show');
+    }
+    function rejectCookies() {
+      localStorage.setItem('cookiesAccepted', 'false');
+      document.getElementById('cookie-popup').classList.remove('show');
+    }
+  </script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) window.netlifyIdentity.on("login", () => document.location.href = "/admin/");
+      });
+    }
+  </script>
+  <script>
+    const services = ["paving", "roof-cleaning-and-repairing", "artificial-grass", "fencing", "house-painting", "fascias-and-gutters", "driveways", "gutter-cleaning"];
+
+    function markdownToHtml(markdown) {
+      let html = markdown
+        .replace(/^# (.*$)/gim, '<h3 class="text-xl font-semibold mb-4">$1</h3>')
+        .replace(/^## (.*$)/gim, '<h4 class="text-lg mb-2">$1</h4>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1" class="w-full service-img rounded-lg shadow mb-4" onerror="this.src=\'/fallback.jpg\'">')
+        .replace(/\n/g, '<br>');
+      return `<p class="text-gray-600 mb-4">${html.trim()}</p>`;
+    }
+
+    async function loadServices() {
+      const container = document.getElementById("services-list");
+      for (let name of services) {
+        try {
+          const res = await fetch(`/content/services/${name}.md`);
+          if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+          const text = await res.text();
+          const titleMatch = text.match(/^# (.*$)/m);
+          const title = titleMatch ? titleMatch[1].trim() : name;
+          const body = text.split('\n').slice(titleMatch ? 1 : 0).join('\n').trim();
+          const htmlContent = markdownToHtml(body);
+          const div = document.createElement("div");
+          div.className = "bg-white p-6 rounded-lg shadow";
+          div.innerHTML = `<h3 class="text-xl font-semibold mb-4">${title}</h3>${htmlContent}`;
+          container.appendChild(div);
+        } catch (e) {
+          const div = document.createElement("div");
+          div.className = "bg-white p-6 rounded-lg shadow";
+          div.innerHTML = `
+            <img src="/${name}.jpg" alt="${name}" class="w-full service-img rounded-lg shadow mb-4" onerror="this.src='/fallback.jpg'">
+            <h3 class="text-xl font-semibold mb-4">${name}</h3>
+            <p class="text-gray-600 mb-4">Service details unavailable.</p>`;
+          container.appendChild(div);
+        }
+      }
+    }
+  </script>
+</body>
+</html>
