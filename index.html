@@ -48,7 +48,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16 items-center">
         <a href="#home" class="flex items-center">
-          <img src="/uploads/logo.jpg" alt="Amberstar Landscapes Logo" class="h-10 w-auto mr-2">
+          <img src="/logo.jpg" alt="Amberstar Landscapes Logo" class="h-10 w-auto mr-2">
           <span class="text-2xl font-bold">Amberstar Landscapes</span>
         </a>
         <div class="flex items-center space-x-4">
@@ -184,7 +184,7 @@
         .replace(/^## (.*$)/gim, '<h4 class="text-lg mb-2">$1</h4>')
         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
         .replace(/\*(.*?)\*/g, '<em>$1</em>')
-        .replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1" class="w-full service-img rounded-lg shadow mb-4" onerror="this.src=\'/uploads/fallback.jpg\'">')
+        .replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1" class="w-full service-img rounded-lg shadow mb-4" onerror="this.src=\'/fallback.jpg\'">')
         .replace(/\n/g, '<br>');
       return `<p class="text-gray-600 mb-4">${html.trim()}</p>`;
     }
@@ -208,7 +208,7 @@
           const div = document.createElement("div");
           div.className = "bg-white p-6 rounded-lg shadow";
           div.innerHTML = `
-            <img src="/uploads/${name}.jpg" alt="${name}" class="w-full service-img rounded-lg shadow mb-4" onerror="this.src='/uploads/fallback.jpg'">
+            <img src="/${name}.jpg" alt="${name}" class="w-full service-img rounded-lg shadow mb-4" onerror="this.src='/fallback.jpg'">
             <h3 class="text-xl font-semibold mb-4">${name}</h3>
             <p class="text-gray-600 mb-4">Service details unavailable.</p>`;
           container.appendChild(div);
