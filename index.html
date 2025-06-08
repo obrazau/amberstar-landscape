@@ -47,7 +47,7 @@
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
                     <a href="#home" class="flex items-center">
-                        <img src="public/uploads/logo.jpg" alt="Amberstar Landscapes Logo" class="h-10 w-auto mr-2">
+                        <img src="/uploads/logo.jpg" alt="Amberstar Landscapes Logo" class="h-10 w-auto mr-2">
                         <span class="text-2xl font-bold">Amberstar Landscapes</span>
                     </a>
                 </div>
@@ -62,7 +62,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="bg-cover bg-center min-h-[50vh] flex items-center justify-center bg-black bg-opacity-50" style="background-image: url('public/uploads/hero.jpg')">
+    <section id="home" class="bg-cover bg-center min-h-[50vh] flex items-center justify-center bg-black bg-opacity-50" style="background-image: url('/uploads/hero.jpg')">
         <div class="text-center text-white px-4 py-8">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">Premium Landscaping & Maintenance</h1>
             <p class="text-lg mb-6">Transforming Outdoor Areas</p>
@@ -210,7 +210,7 @@
                 .replace(/^## (.*$)/gim, '<h4 class="text-lg mb-2">$1</h4>')
                 .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                 .replace(/\*(.*?)\*/g, '<em>$1</em>')
-                .replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1" class="w-full service-img rounded-lg shadow mb-4">')
+                .replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1" class="w-full service-img rounded-lg shadow mb-4" onerror="this.src=\'/uploads/fallback.jpg\'">')
                 .replace(/\n/g, '<br>');
             return `<p class="text-gray-600 mb-4">${html.trim()}</p>`;
         }
@@ -233,7 +233,7 @@
                     console.error(`Error loading ${name}:`, e);
                     const div = document.createElement("div");
                     div.className = "bg-white p-6 rounded-lg shadow";
-                    div.innerHTML = `<img src="/uploads/${name}.jpg" alt="${name}" class="w-full service-img rounded-lg shadow mb-4"><h3 class="text-xl font-semibold mb-4">${name}</h3><p class="text-gray-600 mb-4">Service details unavailable (404).</p>`;
+                    div.innerHTML = `<img src="/uploads/${name}.jpg" alt="${name}" class="w-full service-img rounded-lg shadow mb-4" onerror="this.src=\'/uploads/fallback.jpg\'"><h3 class="text-xl font-semibold mb-4">${name}</h3><p class="text-gray-600 mb-4">Service details unavailable (404).</p>`;
                     container.appendChild(div);
                 }
             }
