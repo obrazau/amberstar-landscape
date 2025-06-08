@@ -203,7 +203,7 @@
             "gutter-cleaning"
         ];
 
-        // Simple Markdown to HTML conversion (basic support)
+        // Simple Markdown to HTML conversion
         function markdownToHtml(markdown) {
             let html = markdown
                 .replace(/^# (.*$)/gim, '<h3 class="text-xl font-semibold mb-4">$1</h3>')
@@ -212,7 +212,7 @@
                 .replace(/\*(.*?)\*/g, '<em>$1</em>')
                 .replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1" class="w-full service-img rounded-lg shadow mb-4">')
                 .replace(/\n/g, '<br>');
-            return `<p class="text-gray-600 mb-4">${html}</p>`;
+            return `<p class="text-gray-600 mb-4">${html.trim()}</p>`;
         }
 
         async function loadServices() {
@@ -221,19 +221,19 @@
                 try {
                     const res = await fetch(`/content/services/${name}.md`);
                     const text = await res.text();
-                    const lines = text.split('\n');
-                    const title = lines[0].replace('# ', '').trim() || name;
-                    const body = lines.slice(1).join('\n');
+                    const titleMatch = text.match(/^# (.*$)/m);
+                    const title = titleMatch ? titleMatch[1].trim() : name;
+                    const body = text.split('\n').slice(titleMatch ? 1 : 0).join('\n').trim();
                     const htmlContent = markdownToHtml(body);
                     const div = document.createElement("div");
                     div.className = "bg-white p-6 rounded-lg shadow";
                     div.innerHTML = `<h3 class="text-xl font-semibold mb-4">${title}</h3>${htmlContent}`;
                     container.appendChild(div);
                 } catch (e) {
-                    console.error("Error loading service:", e);
+                    console.error(`Error loading ${name}:`, e);
                     const div = document.createElement("div");
                     div.className = "bg-white p-6 rounded-lg shadow";
-                    div.innerHTML = `<img src="public/uploads/${name}.jpg" alt="${name}" class="w-full service-img rounded-lg shadow mb-4"><h3 class="text-xl font-semibold mb-4">${name}</h3><p class="text-gray-600 mb-4">Service details unavailable.</p>`;
+                    div.innerHTML = `<img src="/uploads/${name}.jpg" alt="${name}" class="w-full service-img rounded-lg shadow mb-4"><h3 class="text-xl font-semibold mb-4">${name}</h3><p class="text-gray-600 mb-4">Service details unavailable (404).</p>`;
                     container.appendChild(div);
                 }
             }
