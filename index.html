@@ -212,7 +212,7 @@
                 .replace(/\*(.*?)\*/g, '<em>$1</em>')
                 .replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1" class="w-full service-img rounded-lg shadow mb-4" onerror="this.src=\'/uploads/fallback.jpg\'">')
                 .replace(/\n/g, '<br>');
-            return `<p class="text-gray-600 mb-4">${html.trim()}</p>`;
+            return `<p class="text-gray-600 mb-4">${html.trim()}</p>';
         }
 
         async function loadServices() {
