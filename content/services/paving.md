@@ -1,6 +1,4 @@
----
-title: "Paving"
-image: "/uploads/pavement.jpg"
----
+# Paving
+![Paving](/uploads/paving.jpg)
 
 Custom paving solutions to enhance the functionality and beauty of your property.
