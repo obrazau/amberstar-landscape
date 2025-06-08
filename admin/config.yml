@@ -3,7 +3,7 @@ backend:
   branch: main # Adjust if your branch is different
 
 media_folder: "/public" # Where media files are stored
-public_folder: "public/" # URL path to access media
+public_folder: "/" # URL path to access media
 
 collections:
   - name: "services"
