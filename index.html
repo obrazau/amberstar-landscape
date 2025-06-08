@@ -203,18 +203,31 @@
             "gutter-cleaning"
         ];
 
+        // Simple Markdown to HTML conversion (basic support)
+        function markdownToHtml(markdown) {
+            let html = markdown
+                .replace(/^# (.*$)/gim, '<h3 class="text-xl font-semibold mb-4">$1</h3>')
+                .replace(/^## (.*$)/gim, '<h4 class="text-lg mb-2">$1</h4>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1" class="w-full service-img rounded-lg shadow mb-4">')
+                .replace(/\n/g, '<br>');
+            return `<p class="text-gray-600 mb-4">${html}</p>`;
+        }
+
         async function loadServices() {
             const container = document.getElementById("services-list");
             for (let name of services) {
                 try {
-                    const res = await fetch(`/content/service/${name}`);
+                    const res = await fetch(`/content/services/${name}.md`);
                     const text = await res.text();
-                    const title = (text.match(/<title>.*?<\/title>/) || [`<title>${name}</title>`])[0].replace(/<\/?title>/g, "").trim();
-                    const image = (text.match(/<img[^>]+src=['"][^'"]+['"][^>]*>/) || [`<img src="public/uploads/${name}.jpg" alt="${name}" class="w-full service-img rounded-lg shadow mb-4">`])[0].trim();
-                    const body = text.split("</title>")[1].trim() || `Details about ${name}`;
+                    const lines = text.split('\n');
+                    const title = lines[0].replace('# ', '').trim() || name;
+                    const body = lines.slice(1).join('\n');
+                    const htmlContent = markdownToHtml(body);
                     const div = document.createElement("div");
                     div.className = "bg-white p-6 rounded-lg shadow";
-                    div.innerHTML = `${image}<h3 class="text-xl font-semibold mb-4">${title}</h3><p class="text-gray-600 mb-4">${body}</p>`;
+                    div.innerHTML = `<h3 class="text-xl font-semibold mb-4">${title}</h3>${htmlContent}`;
                     container.appendChild(div);
                 } catch (e) {
                     console.error("Error loading service:", e);
@@ -226,7 +239,6 @@
             }
         }
 
-        // Update window.onload to include loadServices
         window.onload = function() {
             if (!localStorage.getItem('cookiesAccepted')) {
                 document.getElementById('cookie-popup').classList.add('show');
