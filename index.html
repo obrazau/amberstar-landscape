@@ -194,7 +194,7 @@
       const container = document.getElementById("services-list");
       for (let name of services) {
         try {
-          const res = await fetch(`/content/services/${name}.md`);
+          const res = await fetch(`/services/${name}.md`);
           if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
           const text = await res.text();
           const titleMatch = text.match(/^# (.*$)/m);
