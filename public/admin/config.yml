@@ -2,8 +2,10 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "public/images"
-public_folder: "/images"
+media_folder: "public" # where media is saved (CMS won't create subfolders)
+public_folder: "/"     # how images are referenced in HTML
+
+publish_mode: editorial_workflow
 
 collections:
   - name: "services"
@@ -11,8 +13,9 @@ collections:
     folder: "public/services"
     create: true
     slug: "{{slug}}"
-    format: "frontmatter"
+    format: "markdown"
+    extension: "md"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Image Path", name: "image", widget: "string", required: false, hint: "e.g. /fencing.jpg" }
       - { label: "Body", name: "body", widget: "markdown" }
