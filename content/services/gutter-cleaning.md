@@ -1,6 +1,4 @@
----
-title: "Gutter Cleaning"
-image: "/uploads/gutter cleaning.jpg"
----
+# Gutter cleaning
+![Gutter cleaning](/uploads/gutter.jpg)
 
 Thorough gutter cleaning for homes using advanced methods.
